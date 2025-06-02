@@ -1,1 +1,1 @@
-export const BASE_URL = "https://creditsale.uz";
+export const BASE_URL = "https://creditsale.uz/api";
