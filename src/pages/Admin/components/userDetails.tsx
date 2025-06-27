@@ -88,7 +88,7 @@ const UserDetailsModal: React.FC<UserDetailsModalProps> = ({
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          amount: row.payment_amount,
+          amount: Number(row.payment_amount),
           payment_month: row.payment_month,
         }),
       });
@@ -182,7 +182,7 @@ const UserDetailsModal: React.FC<UserDetailsModalProps> = ({
         const editable = isEditing(record);
         return editable ? (
           <Input
-            value={Number(text).toLocaleString()}
+            value={record.payment_amount}
             onChange={(e) =>
               handleChange(e.target.value, record.id, "payment_amount")
             }
@@ -393,7 +393,6 @@ const UserDetailsModal: React.FC<UserDetailsModalProps> = ({
     };
     fetchPaymentHistory();
   }, [userData?.id]);
-  console.log("userData", userData);
 
   return (
     <Modal
@@ -416,7 +415,7 @@ const UserDetailsModal: React.FC<UserDetailsModalProps> = ({
       ) : userData ? (
         <div className="">
           <h3 className="font-bold text-[20px] my-5" style={{ marginTop: 20 }}>
-            To'liq malumotcha
+            To'liq malumot
           </h3>
           <Table
             dataSource={getUserInfo(userData)}
