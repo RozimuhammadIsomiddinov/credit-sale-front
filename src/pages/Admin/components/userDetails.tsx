@@ -2,6 +2,8 @@ import type React from "react";
 import { useState, useEffect } from "react";
 import { Modal, Spin, Table, message, Input, Button, Select } from "antd";
 import { Edit2, Save, X } from "lucide-react";
+import { NumericFormat } from "react-number-format";
+
 // import {
 //   User,
 //   Package,
@@ -181,11 +183,14 @@ const UserDetailsModal: React.FC<UserDetailsModalProps> = ({
       render: (text: string, record: any) => {
         const editable = isEditing(record);
         return editable ? (
-          <Input
+          <NumericFormat
             value={record.payment_amount}
-            onChange={(e) =>
-              handleChange(e.target.value, record.id, "payment_amount")
-            }
+            thousandSeparator=" "
+            allowNegative={false}
+            onValueChange={(values) => {
+              handleChange(values.value, record.id, "payment_amount");
+            }}
+            customInput={Input}
           />
         ) : (
           Number(text).toLocaleString()
