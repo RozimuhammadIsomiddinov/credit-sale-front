@@ -416,7 +416,7 @@ const UserDetailsModal: React.FC<UserDetailsModalProps> = ({
       ) : userData ? (
         <div className="">
           <h3 className="font-bold text-[20px] my-5" style={{ marginTop: 20 }}>
-            To'liq malumot
+            To'liq malumotcha
           </h3>
           <Table
             dataSource={getUserInfo(userData)}
