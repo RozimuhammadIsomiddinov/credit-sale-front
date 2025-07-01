@@ -106,7 +106,7 @@ const Zone: React.FC = () => {
 
   const handleDownloadAll = async () => {
     try {
-      const res = await api.get(`${BASE_URL}/excel-download-all`, {
+      const res = await api.get(`${BASE_URL}i/excel-download-all`, {
         responseType: "blob",
       });
       const url = window.URL.createObjectURL(new Blob([res.data]));
