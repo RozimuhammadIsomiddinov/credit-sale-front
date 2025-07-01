@@ -127,7 +127,7 @@ const Zone: React.FC = () => {
 
   const columns = [
     { title: "ID", dataIndex: "id", key: "id" },
-    { title: "Joy nomi", dataIndex: "zone_name", key: "zone_name" },
+    { title: "Joy nomidagina", dataIndex: "zone_name", key: "zone_name" },
     { title: "Ma'lumot", dataIndex: "description", key: "description" },
     {
       title: "Vaqti",
