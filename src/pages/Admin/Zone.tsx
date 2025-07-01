@@ -157,14 +157,14 @@ const Zone: React.FC = () => {
             icon={<Download size={16} />}
             onClick={() => handleDownload(record.zone_name)}
           >
-            Exel
+            Excel
           </Button>
           <Button
             type="dashed"
             icon={<Download size={16} />}
             onClick={handleDownloadAll}
           >
-            Exel Hammasi
+            Excel Hammasi
           </Button>
         </div>
       ),
