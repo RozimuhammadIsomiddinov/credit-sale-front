@@ -2,8 +2,6 @@ import type React from "react";
 import { useState, useEffect } from "react";
 import { Modal, Spin, Table, message, Input, Button, Select } from "antd";
 import { Edit2, Save, X } from "lucide-react";
-import { NumericFormat } from "react-number-format";
-
 // import {
 //   User,
 //   Package,
@@ -90,7 +88,7 @@ const UserDetailsModal: React.FC<UserDetailsModalProps> = ({
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          amount: Number(row.payment_amount),
+          amount: row.payment_amount,
           payment_month: row.payment_month,
         }),
       });
@@ -183,14 +181,11 @@ const UserDetailsModal: React.FC<UserDetailsModalProps> = ({
       render: (text: string, record: any) => {
         const editable = isEditing(record);
         return editable ? (
-          <NumericFormat
-            value={record.payment_amount}
-            thousandSeparator=" "
-            allowNegative={false}
-            onValueChange={(values) => {
-              handleChange(values.value, record.id, "payment_amount");
-            }}
-            customInput={Input}
+          <Input
+            value={Number(text).toLocaleString()}
+            onChange={(e) =>
+              handleChange(e.target.value, record.id, "payment_amount")
+            }
           />
         ) : (
           Number(text).toLocaleString()
@@ -398,6 +393,7 @@ const UserDetailsModal: React.FC<UserDetailsModalProps> = ({
     };
     fetchPaymentHistory();
   }, [userData?.id]);
+  console.log("userData", userData);
 
   return (
     <Modal
