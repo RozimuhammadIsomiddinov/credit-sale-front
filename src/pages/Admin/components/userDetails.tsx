@@ -88,7 +88,7 @@ const UserDetailsModal: React.FC<UserDetailsModalProps> = ({
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          amount: row.payment_amount,
+          amount: parseFloat(row.payment_amount),
           payment_month: row.payment_month,
         }),
       });
@@ -182,9 +182,13 @@ const UserDetailsModal: React.FC<UserDetailsModalProps> = ({
         const editable = isEditing(record);
         return editable ? (
           <Input
-            value={Number(text).toLocaleString()}
+            value={record.payment_amount}
             onChange={(e) =>
-              handleChange(e.target.value, record.id, "payment_amount")
+              handleChange(
+                e.target.value.replace(/[^0-9]/g, ""), // faqat raqamlar qoldiriladi
+                record.id,
+                "payment_amount"
+              )
             }
           />
         ) : (
